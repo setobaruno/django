@@ -1,0 +1,11 @@
+body{font-family:verdana;font-size:12px}
+.timbul{
+	border-bottom:1px dotted #ccc;
+}
+.timbul:hover{
+	background: #f1f1f1;
+	cursor:pointer;
+}
+a{
+	text-decoration:none;
+}
