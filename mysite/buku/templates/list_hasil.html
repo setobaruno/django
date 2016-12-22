@@ -1,0 +1,21 @@
+	<table style="border-collapse:collapse" >
+		<tr>
+			<!--<th>Id Buku</th>-->
+			<th>&nbsp;&nbsp;Judul Buku</th>
+		</tr>
+		{% for object in object_list %}
+		
+		<tr class="timbul"> 
+		<!--	<td>{{ object.id_buku }}</td> -->
+			<td>			
+				&nbsp;&nbsp;
+				<a href="{% url 'buku_detail' pk=object.pk %}">{{ object.judul_buku }}</a>
+			</td>
+			
+		</tr>
+		{% endfor %}
+	</table>
+	<br/>
+	{% include 'pagination.html' with form_target='buku-list-filter' %}
+	
+	

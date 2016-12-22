@@ -1,0 +1,12 @@
+<form id="buku-list-filter" action="aa.html">
+  <input id="txtCari">
+  
+  <button type="submit" name="page" value="1">Cari</button>
+</form>
+
+<script src="js/jquery.js"></script>
+<script>
+	$('#buku-list-filter').keyup(function() {
+	  $('#buku-list-filter').submit();
+	});
+</script>

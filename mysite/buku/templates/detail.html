@@ -1,0 +1,63 @@
+<html>
+	<head>
+		<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+		<style type="text/css">
+			html { height: 100% }
+			body { height: 100%; margin: 0; padding: 0 }	
+			.judul{font-family:verdana;font-size:1.5em}	
+			.lbl{font-family:verdana;font-size:12px;}
+			#ctr { margin:0 auto;}
+			.odd{background: #f1f1f1;}
+		</style>
+		{% load static %}
+		<link rel="stylesheet" href="{% static 'style.css' %}" type="text/css" media="screen, projection"/>		
+		<script src="{% static 'js/jquery.js' %}"></script>
+		<script src="{% static 'js/jquery-ui/jquery-ui.js' %}"></script>
+		<script src="{% static 'js/thickbox.js' %}"></script>	
+			
+	</head>
+<body>
+<br/>
+<div id="ctr" align="center">
+<strong><p style="font-family:Verdana;font-size:1.5em">Informasi Buku</p></strong>
+<table  style="border-collapse:collapse">
+	<tr class="odd">
+		<td style="font-weight:bold">Id Buku</td>
+		<td>:</td>
+		<td>{{ object.id_buku}}</td>
+	</tr>
+	<tr>
+		<td style="font-weight:bold">Judul Buku</td>
+		<td>:</td>
+		<td>{{ object.judul_buku}}</td>
+	</tr>
+	<tr class="odd">
+		<td style="font-weight:bold">Pengarang</td>
+		<td>:</td>
+		<td>
+			{{ object.id_pengarang.nama_pengarang }}			
+		</td>
+	</tr>
+	<tr>
+		<td style="font-weight:bold">Penerbit</td>
+		<td>:</td>
+		<td>
+			{{ object.id_penerbit.nama_penerbit }}			
+		</td>
+	</tr>
+	<tr class="odd">
+		<td style="font-weight:bold">Kategori</td>
+		<td>:</td>
+		<td>
+			{{ object.id_kategori.kategori }}			
+		</td>
+	</tr>
+	<tr>
+		<td style="font-weight:bold">Tahun Terbit</td>
+		<td>:</td>
+		<td>{{ object.tahun_terbit }}</td>
+	</tr>	
+</table>
+</div>
+</body>
+</html>

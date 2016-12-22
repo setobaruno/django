@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+		<style type="text/css">
+			html { height: 100% }
+			body { height: 100%; margin: 0; padding: 0 }	
+			.judul{font-family:verdana;font-size:1.5em}	
+			.lbl{font-family:verdana;font-size:12px;}
+			#ctr { margin:0 auto;width:1024px;}
+		</style>
+		{% load static %}
+		<link rel="stylesheet" href="{% static 'style.css' %}" type="text/css" media="screen, projection"/>		
+		<script src="{% static 'js/jquery.js' %}"></script>
+		<script src="{% static 'js/jquery-ui/jquery-ui.js' %}"></script>
+		<script src="{% static 'js/thickbox.js' %}"></script>	
+			
+	</head>
+<body>
+<div id="ctr" align="center">		
+	<table>
+		<tr>
+			<td width="50%"><strong><span class="judul">Aplikasi Katalog Buku</span></strong></td>
+			<td align="right" width="50%"><strong><span class="lbl"><a href="{% url 'map_vi'%}" target="_NONE">--Peta Lokasi Penerbit Buku --</a></span></strong></td>
+		</tr>
+	</table>
+	<br/>
+	<form id="buku-list-filter" action="{% url 'buku_list' %}">
+	  <span class="lbl">Pencarian Judul Buku</span>
+	  <input 
+		id="txtCari"
+		name="{{ form.query.html_name }}" 
+		type="search"  
+		{% if form.query.value %}        
+			value="{{ form.query.value }}"
+		{% else %}
+			value=""
+		{% endif %} size="50">
+	  
+	  <button type="submit" name="page" value="1">Cari</button>
+	</form><br/>
+	<!--<strong><span class="lbl"><u>Daftar Buku:</u></span></strong>-->
+	<div class="results">
+	  {% include 'list_hasil.html' %}
+	</div>		
+</div>	
+	<script>		
+		//$('#buku-list-filter').keyup(function() {
+		//  $('#buku-list-filter').submit();
+		//  $('#txtCari').focus();
+		//});
+	</script>
+</body>	

@@ -1,0 +1,31 @@
+<script>        
+			google.charts.load('upcoming', {'packages': ['geochart']});
+			google.charts.setOnLoadCallback(drawMarkersMap);
+
+			function drawMarkersMap() {
+				var data = google.visualization.arrayToDataTable([
+					['Kota','Jumlah Penerbit'],
+					{% for object in object_list %}		
+						['{{ object.kota_penerbit }}', {{ object.jum }}],
+					{% endfor %}	
+				]);
+
+				var options = {
+					//sizeAxis: { minValue: 0, maxValue: 100 },
+					region: 'ID', 
+					displayMode: 'markers',
+					colorAxis: {colors: ['yellow', 'green']} 
+				  };
+
+			  var chart = new google.visualization.GeoChart(document.getElementById('map-canvas'));
+			  chart.draw(data, options);
+			};		
+		</script>
+	
+	</head>
+<body>
+	<div align="center">
+		<strong><span class="judul">Persebaran Lokasi Penerbit Buku</span></strong><br/>
+	</div>		
+	<div id="map-canvas" /> </div>	
+</body>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+		<style type="text/css">
+			html { height: 100% }
+			body { height: 100%; margin: 0; padding: 0 }	
+			.judul{margin:0 auto;font-family:verdana}	
+			.lbl{margin:0 auto;font-family:verdana;font-size:12px;}
+		</style>
+		{% load static %}
+		<link rel="stylesheet" href="{% static 'js/jquery-ui/jquery-ui.css' %}" type="text/css" media="screen, projection"/>		
+		<script src="{% static 'js/jquery.js' %}"></script>
+		<script src="{% static 'js/jquery-ui/jquery-ui.js' %}"></script>
+		<script src="{% static 'js/thickbox.js' %}"></script>	
+			
+	</head>
+<body>		
+<script type="text/javascript">
+     $(function(){ 
+        $('#dialog').dialog({autoOpen: false,width: 800,closeOnEscape: false,modal: true,resizable: false});				
+				$('#dialog').dialog('open');
+				$('#btnCancel').click(function(){
+					$('#dialog').dialog('close');
+					window.location.href = '/buku/';
+				});return false;
+    });
+</script>
+<div id="dialog">
+<div id="wrp">     
+	<div id="ctt">
+		<strong><p>Informasi Buku</i></p></strong>
+		<table>
+			<tr>
+				<td>Id Buku</td>
+				<td>:</td>
+				<td>{{ object.id_buku}}</td>
+			</tr>
+			<tr>
+				<td>Judul Buku</td>
+				<td>:</td>
+				<td>{{ object.judul_buku}}</td>
+			</tr>
+			<tr>
+				<td>Pengarang</td>
+				<td>:</td>
+				<td>
+					{{ object.id_pengarang.nama_pengarang }}
+					
+				</td>
+			</tr>
+			<tr>
+				<td>Penerbit</td>
+				<td>:</td>
+				<td>
+					{{ object.id_penerbit.nama_penerbit }}
+					
+				</td>
+			</tr>
+			<tr>
+				<td>Kategori</td>
+				<td>:</td>
+				<td>
+					{{ object.id_kategori.kategori }}
+					
+				</td>
+			</tr>
+			<tr>
+				<td>Tahun Terbit</td>
+				<td>:</td>
+				<td>{{ object.tahun_terbit }}</td>
+			</tr>	
+		</table>
+		<input type="button" class="btnCancel" value="OK" id="btnCancel">		
+			
+	</div>
+</div>
+</body>
+</html>	

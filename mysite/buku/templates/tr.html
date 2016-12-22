@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+		<style type="text/css">
+			html { height: 100% }
+			body { height: 100%; margin: 0; padding: 0 }
+			#map-canvas { width: 1024px; height: 600px; margin:0 auto;border:1px solid #ccc}	
+			.judul{margin:0 auto;font-family:verdana}	
+		</style>
+		<script type="text/javascript"
+			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCBeIvJweS4ZzyJRvBA7kZnryBH-SZzbFw&sensor=true">
+		</script>
+		<script type='text/javascript' src='https://www.gstatic.com/charts/loader.js'></script>
+		
+		<script>        
+			google.charts.load('upcoming', {'packages': ['geochart']});
+			google.charts.setOnLoadCallback(drawMarkersMap);
+
+			function drawMarkersMap() {
+				var data = google.visualization.arrayToDataTable([
+					['Kota','Jumlah Penerbit'],
+					{% for object in object_list %}		
+						['{{ object.kota_penerbit }}', {{ object.jum }}],
+					{% endfor %}	
+				]);
+
+				var options = {
+					//sizeAxis: { minValue: 0, maxValue: 100 },
+					region: 'ID', 
+					displayMode: 'markers',
+					colorAxis: {colors: ['yellow', 'green']} 
+				  };
+
+			  var chart = new google.visualization.GeoChart(document.getElementById('map-canvas'));
+			  chart.draw(data, options);
+			};		
+		</script>
+	
+	</head>
+<body>
+	<div align="center">
+		<strong><span class="judul">Persebaran Lokasi Penerbit Buku</span></strong><br/>
+	</div>		
+	<div id="map-canvas" /> </div>	
+</body>
+</html>
